@@ -20,10 +20,6 @@ Both quantitative and visualization results have shown that our EmbodiedOcc outp
 
 ![overview](./img/Main.png)
 
-## Getting Started
-
-Code is available at: [EmbodiedOcc]()
-
 ## Related Projects
 
 Our work is inspired by these excellent open-sourced repos:
