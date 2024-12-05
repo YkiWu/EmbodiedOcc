@@ -1,0 +1,246 @@
+<!doctype html>
+<html>
+<head>
+<title>EmbodiedOcc</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+<link href="bootstrap.min.css" rel="stylesheet">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"> -->
+<link href="opensans.css" rel="stylesheet">
+<link rel="icon" href="images/logo3.png">
+<link href="style.css" rel="stylesheet">
+<style>
+  .container_2{
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+  .collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+</style>
+
+<style>
+.paperthumb {
+  float:left; width: 120px; margin: 3px 10px 7px 0;
+}
+.paperdesc {
+  clear: both;
+}
+</style>
+</head>
+
+<body class="nd-docs">
+<div class="nd-pageheader">
+ <div class="container">
+ <p class="lead" style="font-size:30px">
+    <b><a href="https://arxiv.org/abs/2405.17429">EmbodiedOcc: Embodied 3D Occupancy Prediction for <br> Vision-based Online Scene Understanding</a></b>
+  <address style="font-size: 110%;">
+    <nobr>Yuqi Wu,</nobr>
+    <nobr><a href="https://wzzheng.net/">Wenzhao Zheng</a><sup>†</sup>,</nobr>
+    <nobr><a href="https://scholar.google.com/citations?user=11kh6C4AAAAJ&hl=en&oi=ao">Sicheng Zuo</a>,</nobr>
+    <nobr><a href="https://scholar.google.com/citations?&user=LKVgsk4AAAAJ">Yuanhui Huang</a>,</nobr>
+    <nobr><a href="https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en">Jie Zhou</a>,</nobr>
+    <nobr><a href="http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/">Jiwen Lu</a><sup>‡</sup>
+  <br>
+      <nobr>Tsinghua University</nobr>
+      <!-- <nobr><sup>2</sup>PhiGent Robotics</nobr> -->
+  </address>
+   <!-- <div style="font-size: 170%;">CVPR 2023</div> -->
+  <address style="font-size: 120%;">
+	 <!-- <br> -->
+  [<a href="https://arxiv.org/pdf/2405.17429"><b>Paper (Arxiv)</b></a>]&nbsp;&nbsp;&nbsp;&nbsp;
+  <!-- [<a href="https://www.youtube.com/">Video(Youtube)</a>]&nbsp;&nbsp;&nbsp;&nbsp; -->
+  [<a href="https://github.com/huang-yh/GaussianFormer"><b>Code (GitHub)</b></a>]&nbsp;&nbsp;&nbsp;&nbsp;
+  <!-- [<a href="https://zhuanlan.zhihu.com">Post(Zhihu)</a>] -->
+  </address>
+  <small>† Project Leader. ‡Corresponding author.</small>
+ </div>
+ </p>
+ </div>
+</div> <!-- end nd-pageheader -->
+
+<div class="container">
+
+
+<p align="center">
+  <video width="90%" controls>
+    <source src="vid/final_demo.mp4" type="video/mp4">
+  </video>
+</p>
+
+<p align="center">
+    <img src="img/teaser_v4.png" width="90%">
+</p>
+<p><b>Overview of our contributions.</b> 
+  Targeting progressive embodied exploration in indoor scenarios, we formulate an embodied 3D occupancy prediction task and propose a Gaussian-based EmbodiedOcc framework accordingly.
+  Our EmbodiedOcc maintains an explicit Gaussian memory of the current scene and updates this memory during the exploration of this scene.
+  Both quantitative and visualization results have shown that our EmbodiedOcc outperforms existing methods in terms of local occupancy prediction and accomplishes the embodied occupancy prediction task with high accuracy and strong expandability.
+</p>
+
+<style>
+  .flex-container {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-start;
+  }
+  .flex-container p {
+    margin-left: 20px;
+  }
+</style>
+
+<h2>Local Occupancy Prediction Module and Depth-Aware Branch</h2>
+<hr>
+<div class="flex-container">
+  <img src="img/depth.png" width="28%">
+  <p> 
+    We use a set of 3D semantic Gaussians to represent an indoor scene and update the Gaussian-based representation according to semantic and structural features extracted from the input image. 
+    In the local occupancy prediction module, we use a depth-aware branch to provide local structural information for the update of each Gaussian.
+    Along a specific ray, Gaussians distributed in front of the true depth point are likely to model the empty semantic (as Gaussian A). 
+    Gaussians distributed behind the true depth point closely are likely to model valid semantics (as Gaussian B). 
+    Those Gaussians that are distributed behind the true depth point but are too far away require more information to guide their updates (as Gaussian C).
+  </p>
+</div>
+
+<h2>Gaussian Memory Updated Online</h2><hr>
+<p> 
+  We initialize the global scene with uniform 3D semantic Gaussians and progressively update local regions observed by the embodied agent.
+  During each update, the Gaussians within the current frustum are taken from the memory and updated according to their confidence values.
+  Confidence values of those well-updated Gaussians are set to a certain value between \(0\) and \(1\), while others set to 0.
+  The former will be updated slightly and the latter efficiently.
+  <p>
+
+<p align="center">
+     <img src="img/memory_confidence.png" width="70%">
+</p>
+
+<h2>EmbodiedOcc: An Embodied Framework</h2><hr>
+<p> 
+  We maintain an explicit global memory of 3D Gaussians during the exploration of the current scene.
+  For each update, the Gaussians within the frustum are taken from the memory and updated using semantic and structural features extracted from the monocular RGB input.
+  Each Gaussian has a confidence value to determine the degree of this update.
+  Then we detach and put these updated Gaussians back into the memory.
+  During the continuous exploration, we can obtain the current 3D occupancy prediction using a Gaussian-to-voxel splatting module whenever we need.
+  <p>
+
+<p align="center">
+     <img src="img/Main.png" width="90%">
+</p>
+
+
+<h2>Results</h2><hr>
+
+<h4>Local Occupancy Prediction</h4><hr>
+
+We evaluate our local occupancy prediction module on the Occ-ScanNet dataset.
+The results indicate that our local occupancy prediction module outperforms state-of-the-art methods.
+
+<p></p>
+
+<p align="center">
+  <img src="img/local_tab.png" width="90%">
+</p>
+
+
+<h4>Embodied occupancy prediction</h4><hr>
+
+We splice the local occupancy obtained from our local occupancy prediction module to serve as the baseline and evaluate the performance of our EmbodiedOcc.
+It can be observed that our EmbodiedOcc exhibits superior prediction of the scene, which is achieved through the integration of different views.
+
+<p></p>
+
+<p align="center">
+  <img src="img/Embodied_Tab.png" width="90%">
+</p>
+
+<h4>Visualizations</h4><hr>
+
+We select two scenes to show the update of Gaussian memory and corresponding global occupancy with continuous exploration.
+As the Gaussians transition from random to increasingly ordered, the occupancy prediction of the current scene becomes more accurate and complete.
+
+<p></p>
+
+<p align="center">
+  <img src="img/global.png" width="90%">
+</p>
+
+
+
+<p>
+<div class="card">
+<h3 class="card-header">Bibtex</h3>
+<div class="card-block">
+<pre class="card-text clickselect">
+  @article{huang2024gaussian,
+    title={GaussianFormer: Scene as Gaussians for Vision-Based 3D Semantic Occupancy Prediction},
+    author={Huang, Yuanhui and Zheng, Wenzhao and Zhang, Yunpeng and Zhou, Jie and Lu, Jiwen},
+    journal={arXiv preprint arXiv:2405.17429},
+    year={2024}
+}
+</pre>
+</div>
+</div>
+</p>
+
+
+<p align="right">
+     <a href="https://hanlab.mit.edu/projects/anycost-gan/">Website Template</a>
+</p>
+
+</div>
+</div> <!-- row -->
+
+</div> <!-- container -->
+
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+  
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight * 50+ "px";
+      } 
+      content.style.height = "550%";
+    });
+  }
+</script>
+
+</body>
+</html>
+
+
