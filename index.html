@@ -138,7 +138,7 @@
 <p> 
   We initialize the global scene with uniform 3D semantic Gaussians and progressively update local regions observed by the embodied agent.
   During each update, the Gaussians within the current frustum are taken from the memory and updated according to their confidence values.
-  Confidence values of those well-updated Gaussians are set to a certain value between \(0\) and \(1\), while others set to 0.
+  Confidence values of those well-updated Gaussians are set to a certain value between 0 and 1, while others set to 0.
   The former will be updated slightly and the latter efficiently.
   <p>
 
@@ -174,7 +174,7 @@ The results indicate that our local occupancy prediction module outperforms stat
 </p>
 
 
-<h4>Embodied occupancy prediction</h4><hr>
+<h4>Embodied Occupancy Prediction</h4><hr>
 
 We splice the local occupancy obtained from our local occupancy prediction module to serve as the baseline and evaluate the performance of our EmbodiedOcc.
 It can be observed that our EmbodiedOcc exhibits superior prediction of the scene, which is achieved through the integration of different views.
