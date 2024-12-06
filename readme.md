@@ -8,7 +8,7 @@
 
 $\dagger$ Project leader
 
-EmbodiedOcc formulate **an embodied 3D occupancy prediction task** and propose a Gaussian-based framework to accomplish it.
+EmbodiedOcc formulates **an embodied 3D occupancy prediction task** and proposes a Gaussian-based framework to accomplish it.
 
 ![teaser](./img/teaser_v4.png)
 
