@@ -138,7 +138,7 @@
 <p> 
   We initialize the global scene with uniform 3D semantic Gaussians and progressively update local regions observed by the embodied agent.
   During each update, the Gaussians within the current frustum are taken from the memory and updated according to their confidence values.
-  Confidence values of those well-updated Gaussians are set to a certain value between 0 and 1, while others set to 0.
+  Confidence values of those well-updated Gaussians are set to a certain value between 0 and 1, while others are set to 0.
   The former will be updated slightly and the latter efficiently.
   <p>
 
@@ -152,7 +152,7 @@
   For each update, the Gaussians within the frustum are taken from the memory and updated using semantic and structural features extracted from the monocular RGB input.
   Each Gaussian has a confidence value to determine the degree of this update.
   Then we detach and put these updated Gaussians back into the memory.
-  During the continuous exploration, we can obtain the current 3D occupancy prediction using a Gaussian-to-voxel splatting module whenever we need.
+  During the continuous exploration, we can obtain the current 3D occupancy prediction using a Gaussian-to-voxel splatting module.
   <p>
 
 <p align="center">
