@@ -29,3 +29,13 @@ Our work is inspired by these excellent open-sourced repos:
 Our code is based on [GaussianFormer](https://github.com/huang-yh/GaussianFormer).
 
 ## Citation
+
+If you find this project helpful, please consider citing the following paper:
+```
+@article{wu2024embodiedoccembodied3doccupancy,
+      title={EmbodiedOcc: Embodied 3D Occupancy Prediction for Vision-based Online Scene Understanding}, 
+      author={Yuqi Wu and Wenzhao Zheng and Sicheng Zuo and Yuanhui Huang and Jie Zhou and Jiwen Lu},
+      journal={arXiv preprint arXiv:2412.04380},
+      year={2024}
+}
+```
