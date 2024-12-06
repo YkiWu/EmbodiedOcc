@@ -4,9 +4,9 @@
 
 > EmbodiedOcc: Embodied 3D Occupancy Prediction for Vision-based Online Scene Understanding
 
-> Yuqi Wu, [Wenzhao Zheng](https://wzzheng.net/)$\dagger$, [Sicheng Zuo](https://scholar.google.com/citations?user=11kh6C4AAAAJ&hl=en&oi=ao), [Yuanhui Huang](https://scholar.google.com/citations?hl=zh-CN&user=LKVgsk4AAAAJ), [Jie Zhou](https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1), [Jiwen Lu](http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/)$\ddagger$
+> Yuqi Wu, [Wenzhao Zheng](https://wzzheng.net/)$\dagger$, [Sicheng Zuo](https://scholar.google.com/citations?user=11kh6C4AAAAJ&hl=en&oi=ao), [Yuanhui Huang](https://scholar.google.com/citations?hl=zh-CN&user=LKVgsk4AAAAJ), [Jie Zhou](https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1), [Jiwen Lu](http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/)
 
-$\dagger$ Project leader $\ddagger$ Corresponding author
+$\dagger$ Project leader
 
 EmbodiedOcc formulate **an embodied 3D occupancy prediction task** and propose a Gaussian-based framework to accomplish it.
 
