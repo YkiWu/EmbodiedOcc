@@ -66,6 +66,11 @@ EmbodiedOcc
     $ torchrun --nproc_per_node=4 train_embodied.py --py-config config/train_embodied_mini_config.py
     ```
 
+### Checkpoints
+
+1. [Local](https://drive.google.com/file/d/1MKTtFvC5WxQvr2gGlzMElDW4YjejJs5i/view?usp=sharing)
+2. [Global](https://drive.google.com/file/d/1h36ruI9XvCHGwO07Fima7mSzbgVGCqHJ/view?usp=sharing)
+
 ### Visualize
 
 1. Local occupancy prediction:
