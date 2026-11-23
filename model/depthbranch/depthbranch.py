@@ -4,8 +4,8 @@ from mmengine.model import BaseModule
 from .depthnet import DepthNet
 from .unet2d import UNet2D
 import sys
-sys.path.append('/data1/code/wyq/gaussianindoor/EmbodiedOcc')
-sys.path.append('/data1/code/wyq/gaussianindoor/EmbodiedOcc/Depth-Anything-V2/metric_depth')
+sys.path.append('/home/gl/zph_ws/EmbodiedOcc')
+sys.path.append('/home/gl/zph_ws/EmbodiedOcc/Depth-Anything-V2/metric_depth')
 from depth_anything_v2.dpt import DepthAnythingV2
 
 @MODELS.register_module()
@@ -22,7 +22,7 @@ class GaussianDepthBranch(BaseModule):
             'vitg': {'encoder': 'vitg', 'features': 384, 'out_channels': [1536, 1536, 1536, 1536]}
         }
         self.depthanything = DepthAnythingV2(**{**model_configs['vitl'], 'max_depth': 10})
-        self.depthanything.load_state_dict(torch.load('/data1/code/wyq/gaussianindoor/indoor-gaussian-scannet/checkpoints/epoch/model_true.pth'))
+        self.depthanything.load_state_dict(torch.load('/home/gl/zph_ws/EmbodiedOcc/checkpoints/finetune_scannet_depthanythingv2.pth'))
         
         self.unet2d = UNet2D.build(out_feature=200, use_decoder=True, frozen_encoder=True)
         self.depthnet = DepthNet(201, 256, 200, 64)

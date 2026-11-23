@@ -1,5 +1,5 @@
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '7'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0, 1, 2, 3, 4, 5, 6, 7'
 offscreen = False
 if os.environ.get('DISP', 'f') == 'f':
     from pyvirtualdisplay import Display
@@ -36,8 +36,8 @@ import warnings
 warnings.filterwarnings("ignore")
 
 import sys
-sys.path.append('/data1/code/wyq/gaussianindoor/EmbodiedOcc')
-sys.path.append('/data1/code/wyq/gaussianindoor/EmbodiedOcc/Depth-Anything-V2/metric_depth')
+sys.path.append('/home/gl/zph_ws/EmbodiedOcc')
+sys.path.append('/home/gl/zph_ws/EmbodiedOcc/Depth-Anything-V2/metric_depth')
 from train_utils import compute_CP_mega_matrix, downsample_label
 
 def pass_print(*args, **kwargs):

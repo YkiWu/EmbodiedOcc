@@ -2,7 +2,7 @@ import os, time, argparse, os.path as osp, numpy as np
 import torch
 import gc
 import torch.distributed as dist
-os.environ['CUDA_VISIBLE_DEVICES'] = '7'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0, 1, 2, 3, 4, 5, 6, 7'
 offscreen = False
 if os.environ.get('DISP', 'f') == 'f':
     from pyvirtualdisplay import Display
@@ -41,8 +41,8 @@ from pyquaternion import Quaternion
 import warnings
 warnings.filterwarnings("ignore")
 import sys
-sys.path.append('/data1/code/wyq/gaussianindoor/EmbodiedOcc')
-sys.path.append('/data1/code/wyq/gaussianindoor/EmbodiedOcc/Depth-Anything-V2/metric_depth')
+sys.path.append('/home/gl/zph_ws/EmbodiedOcc')
+sys.path.append('/home/gl/zph_ws/EmbodiedOcc/Depth-Anything-V2/metric_depth')
 from PIL import Image
 
 def get_grid_coords(dims, resolution):

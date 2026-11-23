@@ -198,7 +198,7 @@ loss = dict(
     ]
 )
 
-data_path = '/data1/code/wyq/gaussianindoor/EmbodiedOcc/data/occscannet' # path/to/your/data/occscannet
+data_path = '/home/gl/zph_ws/EmbodiedOcc/data/occscannet' # path/to/your/data/occscannet
 
 train_dataset_config = dict(
     type='Scannet_Scene_OpenOccupancy_Dataset',

@@ -30,7 +30,8 @@ class Scannet_Online_SceneOcc_Dataset(data.Dataset):
         data_tag='base',
         ):
         
-        self.occscannet_root = '/data1/code/wyq/gaussianindoor/EmbodiedOcc/data/scene_occ'
+        self.occscannet_root = '/home/gl/zph_ws/EmbodiedOcc/data/scene_occ'
+        self.posed_images_root = '/home/gl/zph_ws/EmbodiedOcc/data/occscannet/posed_images'
         self.phase = phase
         self.num_frames = num_frames
         self.grid_size_occ = grid_size_occ # local size
@@ -76,7 +77,8 @@ class Scannet_Online_SceneOcc_Dataset(data.Dataset):
         meta['global_labels'] = scene_pkg['global_labels'] # (x_dim, y_dim, z_dim)
         meta['global_pts'] = scene_pkg['global_pts'] # (x_dim, y_dim, z_dim, 3)
         meta['global_scene_origin'] = np.array([scene_pkg['global_pts'][:, :, :, 0].min(), scene_pkg['global_pts'][:, :, :, 1].min(), scene_pkg['global_pts'][:, :, :, 2].min()])
-        valid_img_paths = scene_pkg['valid_img_paths'] # list of pths
+        valid_img_paths = scene_pkg['valid_img_paths']
+        valid_img_paths = [os.path.join(self.posed_images_root, p.split('/')[-2], p.split('/')[-1]) for p in valid_img_paths]
         sorted_image_paths = sorted(
             valid_img_paths,
             key=lambda x: int(x.split("/")[-1].split(".")[0])
@@ -123,7 +125,7 @@ class Scannet_Online_SceneOcc_Dataset(data.Dataset):
             
             monometa['mask_in_global_from_this'] = mask_in_global_from_this
             
-            mono_pkg_pth = f'/data1/code/wyq/gaussianindoor/EmbodiedOcc/data/occscannet/gathered_data/{this_name}.pkl'
+            mono_pkg_pth = f'/home/gl/zph_ws/EmbodiedOcc/data/occscannet/gathered_data/{this_name}.pkl'
             with open(mono_pkg_pth, 'rb') as f:
                 data = pickle.load(f)
             monometa['scene_size'] = self.scene_size

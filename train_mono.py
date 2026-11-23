@@ -20,8 +20,8 @@ import open3d as o3d
 import warnings
 warnings.filterwarnings("ignore")
 import sys
-sys.path.append('/data1/code/wyq/gaussianindoor/EmbodiedOcc')
-sys.path.append('/data1/code/wyq/gaussianindoor/EmbodiedOcc/Depth-Anything-V2/metric_depth')
+sys.path.append('/home/gl/zph_ws/EmbodiedOcc')
+sys.path.append('/home/gl/zph_ws/EmbodiedOcc/Depth-Anything-V2/metric_depth')
 from PIL import Image
 
 def pass_print(*args, **kwargs):
@@ -307,7 +307,7 @@ if __name__ == '__main__':
     # Training settings
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--py-config', default='config/train_mono_config.py')
-    parser.add_argument('--work-dir', type=str, default='/home/wyq/WorkSpace/workdir/train_mono')
+    parser.add_argument('--work-dir', type=str, default='/home/gl/zph_ws/EmbodiedOcc/workdir/train_mono')
     parser.add_argument('--resume-from', type=str, default='')
 
     args, _ = parser.parse_known_args()

@@ -4,7 +4,7 @@ import gc
 import torch.distributed as dist
 from torch.utils.tensorboard import SummaryWriter
 os.environ['CUDA_VISIBLE_DEVICES'] = '0, 1, 2, 3, 4, 5, 6, 7'
-os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
+#os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 # torchrun --nproc_per_node=4 train_embodied.py
 from utils.iou_eval import IOUEvalBatch
 from utils.iou_as_iso import SSCMetrics
@@ -22,8 +22,8 @@ import open3d as o3d
 import warnings
 warnings.filterwarnings("ignore")
 import sys
-sys.path.append('/data1/code/wyq/gaussianindoor/EmbodiedOcc')
-sys.path.append('/data1/code/wyq/gaussianindoor/EmbodiedOcc/Depth-Anything-V2/metric_depth')
+sys.path.append('/home/gl/zph_ws/EmbodiedOcc')
+sys.path.append('/home/gl/zph_ws/EmbodiedOcc/Depth-Anything-V2/metric_depth')
 from PIL import Image
 
 def pass_print(*args, **kwargs):
